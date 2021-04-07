@@ -1,23 +1,8 @@
-package hust.soict.hedspi.aims.disc;
+package hust.soict.hedspi.aims.media;
 
-public class DigitalVideoDisc {
-	private String title;
-	private String category;
+public class DigitalVideoDisc extends Media{
 	private String director;
 	private int length;
-	private float cost;
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
 	public String getDirector() {
 		return director;
 	}
@@ -30,29 +15,25 @@ public class DigitalVideoDisc {
 	public void setLength(int length) {
 		this.length = length;
 	}
-	public float getCost() {
-		return cost;
-	}
-	public void setCost(float cost) {
-		this.cost = cost;
-	}
 	public DigitalVideoDisc() {
 		super();
 	}
 	public DigitalVideoDisc(String title) {
 		super();
-		this.title = title;
+		this.setTitle(title); // truy cap vao setTitle cua Media;
 	}
 	public DigitalVideoDisc(String title, String category) {
 		super();
-		this.title = title;
-		this.category = category;
+		this.setTitle(title);
+		// this.category = category;
+		this.setCategory(category);
 	}
 	public DigitalVideoDisc(String title, String category, String director) {
 		super();
-		this.title = title;
+		/*		this.title = title;
 		this.category = category;
 		this.director = director;
+		*/
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();
@@ -62,5 +43,16 @@ public class DigitalVideoDisc {
 		this.length = length;
 		this.cost = cost;
 	}
-	
+	public boolean search(String title) {
+		String[] strArray = title.split(" ");
+		String[] titleDiscArray = this.title.split(" ");
+		for(String str : strArray) {
+			for(String titleDisc : titleDiscArray) {
+				if(titleDisc.equals(str)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}	
 }

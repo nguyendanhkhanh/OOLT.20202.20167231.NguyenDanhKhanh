@@ -1,7 +1,7 @@
 package hust.soict.hedspi.aims.order;
 import java.time.LocalDate;
 
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 
 public class Order {
 	public static final int MAX_NUMBER_ORDERED = 10;
@@ -121,5 +121,12 @@ public class Order {
 		}
 		System.out.println("Total cost: "+ totalCost());
 		System.out.println("********************************");
+	}
+	
+	public DigitalVideoDisc getAluckyItem() {
+		int min=0, max=qtyOrdered;
+		int random = (int)(Math.random()*(max-min)+min);
+		itemsOrdered[random].setCost(0);
+		return itemsOrdered[random];
 	}
 }
